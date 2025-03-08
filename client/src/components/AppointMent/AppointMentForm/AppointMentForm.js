@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
 import { AuthContext } from '../../Context/AuthContext';
 import swal from 'sweetalert';
+// Removed incorrect import statement
 
 const customStyles = {
     content: {

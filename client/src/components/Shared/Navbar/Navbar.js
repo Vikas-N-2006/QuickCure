@@ -1,35 +1,38 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { UserContext } from '../../../App';
-import { hanldeSignOut } from '../../Login/LoginMain/LoginManager';
+import { AuthContext } from '../../Context/AuthContext';
 import Pop from '../Pop/Pop';
 import './Navbar.css';
-import toast, { Toaster } from 'react-hot-toast';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { AuthContext } from '../../Context/AuthContext';
-
+import { Toaster } from 'react-hot-toast';
 
 const Navbar = () => {
-    const {user, loading, error, dispatch} = useContext(AuthContext);
-    const [isSticky, setSticky] = useState(false)
+    const { user } = useContext(AuthContext);
+    const [isSticky, setSticky] = useState(false);
 
     useEffect(() => {
-        window.addEventListener("scroll", () => {
+        const handleScroll = () => {
             if (window.scrollY > 50) {
-                setSticky(true)
+                setSticky(true);
             } else {
-                setSticky(false)
+                setSticky(false);
             }
-        })
-    }, [])
+        };
+        
+        window.addEventListener("scroll", handleScroll);
+        
+        // Cleanup event listener on component unmount
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
     return (
-        <nav className={`navbar navbar-expand-lg navbar-light ${isSticky ? "stickynav" : "normalnav"}`} expand="lg">
+        <nav className={`navbar navbar-expand-lg navbar-light ${isSticky ? "stickynav" : "normalnav"}`}>
             <Toaster />
             <div className="container-fluid">
                 <div className="navbar-heading">
                     <h3>
-                        <Link className="navbar-h" to="/">Dental Doctor</Link>
+                        <Link className="navbar-h" to="/">Quick Cure</Link>
                     </h3>
                 </div>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,45 +40,34 @@ const Navbar = () => {
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav  mb-2 mb-lg-0 ms-auto">
+                    <ul className="navbar-nav mb-2 mb-lg-0 ms-auto">
                         <li className="nav-item">
-                            <a className="nav-link active me-3" aria-current="page" href="/">HOME</a>
+                            <NavLink className="nav-link me-3" to="/" end>HOME</NavLink>
                         </li>
-                        <li className="nav-item active">
-                            <a className="nav-link me-3" href="#doctorContaints">ABOUT</a>
-                        </li>
-
                         <li className="nav-item">
-                            <a href='#ContactPage' className="nav-link me-3">CONTACT</a>
-                            {/* <NavLink activeClassName="ContactPage" className="nav-link me-3" to="#ContactPage">CONTACT</NavLink> */}
+                            <NavLink className="nav-link me-3" to="/about">ABOUT</NavLink>
                         </li>
-
                         <li className="nav-item">
-                            {/* <a className={`nav-link me-3 text-white ${isSticky ? "textDark" : "textWhite"}`} href="#BlogContaint">BLOG</a> */}
-                            <a className="nav-link me-3 textDark" href="#BlogContaint">BLOG</a>
+                            <NavLink className="nav-link me-3" to="/contact">CONTACT</NavLink>
                         </li>
-
                         <li className="nav-item">
-                            <a className="nav-link me-3 textDark" href="#serviceContaint" >DENTAL SERVICE</a>
+                            <NavLink className={"nav-link me-3"} to="/blog">BLOG</NavLink>
                         </li>
-
                         <li className="nav-item">
-                            <a className="nav-link me-3 textDark" href="#reviewsContaints">REVIEWS</a>
+                            <NavLink className="nav-link me-3 textDark" to="/services">DENTAL SERVICE</NavLink>
                         </li>
-
-                        <div className="dropdown">
-
-                            <li className="nav-item">
-                                {user?.email ?
-                                    <Pop/>
-                                    :
-                                    <span>
-                                        <Link className={`nav-link me-3 text-white ${isSticky ? "textDark" : "textWhite"}`} to="/login">LOGIN</Link>
-                                    </span>
-                                }
-                            </li>
-
-                        </div>
+                        <li className="nav-item">
+                            <NavLink className="nav-link me-3 textDark" to="/reviews">REVIEWS</NavLink>
+                        </li>
+                        <li className="nav-item">
+                        {user?.email ? (
+                            <Pop />
+                        ) : (
+                            <NavLink 
+                                className={`nav-link me-3 ${isSticky ? "textDark" : "textWhite"}`} 
+                                to="/login"> LOGIN</NavLink>
+                        )}
+                    </li>
                     </ul>
                 </div>
             </div>

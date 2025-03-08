@@ -9,17 +9,17 @@ const serviceData = [
     {
         name: 'Fluoride Treatment',
         img: flouride,
-        desc:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, quaerat?'
+        desc: "A preventive dental procedure that strengthens enamel, helping to prevent tooth decay and cavities by applying fluoride to the teeth.",
     },
     {
         name: 'Cavity Filling',
         img: cavity,
-        desc:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, quaerat?'
+        desc: "A restorative treatment where decayed tooth material is removed and replaced with a filling to restore the tooth's structure and function.",
     },
     {
         name: 'Teeth Whitening',
         img: teath,
-        desc:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, quaerat?'
+        desc: "A cosmetic procedure that removes stains and discoloration from the teeth, brightening smiles with professional or at-home treatments.",
     }
 ]
 
@@ -33,7 +33,7 @@ const Services = () => {
             <div className="d-flex justify-content-center mt-5">
                 <div className="w-75 row">
                     {
-                        serviceData.map(service =><ServiceDetail service={service} key={service.name}></ServiceDetail>)
+                        serviceData.map(service => <ServiceDetail service={service} key={service.name}></ServiceDetail>)
                     }
                 </div>
             </div>

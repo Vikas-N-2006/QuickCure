@@ -123,7 +123,7 @@ const SignUp = ({ handleResponse }) => {
 
                 <div style={emailError.emailError ? { color: "green" } : { color: "red" }}>
                     <p>{passwordValidation.numeric ? <FaCheck /> : <FaTimes />}
-                        Must Have Valid Email.</p>
+                        Must Have a Valid Email.</p>
                 </div>
 
                 <div style={passwordValidation.carLength ? { color: "green" } : { color: "red" }}>
@@ -147,7 +147,7 @@ const SignUp = ({ handleResponse }) => {
                 </div>
             </div>
 
-            <p className="social-text">Or Sign up with social account</p>
+            <p className="social-text">or Sign up with social account</p>
             <SocialSignUp />
         </form>
 

@@ -11,7 +11,7 @@ const TestimonialDetails = ({testimonial}) => {
                     <p className="card-text text-center"> {testimonial.desc}</p>
                 </div>
                 <div className="cart-footer d-flex align-items-center mb-4 justify-content-center">
-                    {/* <img src={img} alt="" className="footer-img me-3" /> */}
+                    <img src={testimonial.image} alt="patient img" className="footer-img me-3" />
                     <div>
                         <h6 className="text-primary testName">{testimonial.name}</h6>
                         <p className="">{testimonial.address}</p>

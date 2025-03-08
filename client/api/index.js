@@ -10,7 +10,7 @@ import cookieParser from 'cookie-parser';
 const app = express();
 app.use(cors());
 const port = 5000;
-k
+
 mongoose.connection.on("disconnected", () =>{console.log("Disconnected")})
 
 const connect = async () =>{

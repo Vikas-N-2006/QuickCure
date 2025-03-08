@@ -4,11 +4,11 @@ import './Footer.css';
 
 const Footer = () => {
     const noNamed = [
-        { name: "Emergency Dental Care", link: "/emergency" },
-        { name: "Check Up", link: "/checkup" },
-        { name: "Treatment of Personal Diseases", link: "/personal-treatment" },
-        { name: "Tooth Extraction", link: "/tooth-extract" },
-        { name: "Check Up", link: "/checkup" },
+        { name: "Emergency Dental Care", link: "/" },
+        { name: "Check Up", link: "/" },
+        { name: "Treatment of Personal Diseases", link: "/" },
+        { name: "Tooth Extraction", link: "/" },
+        { name: "Check Up", link: "/" },
     ]
     const ourAddress = [
         { name: "New York - 101010 Hudson", link: "//google.com/map" },
@@ -43,9 +43,9 @@ const Footer = () => {
                     <FooterDetail key={3} menuTitle="Oral Health" menuItems={oralHealth} />
                     <FooterDetail key={4} menuTitle="Our Address" menuItems={ourAddress}>
                         <ul className="social-media list-inline">
-                            <li className="list-inline-item"><a href="!#"></a></li>
-                            <li className="list-inline-item"><a href="!#"></a></li>
-                            <li className="list-inline-item"><a href="!#"></a></li>
+                            <li className="list-inline-item"><a href="/"></a></li>
+                            <li className="list-inline-item"><a href="/"></a></li>
+                            <li className="list-inline-item"><a href="/"></a></li>
                         </ul>
                         <div className="md-mt-5">
                             <h6>Call now</h6>
